@@ -1,0 +1,93 @@
+/* ==========================================================================
+   InnoDeck — Design Tokens
+   Style: Magic: The Gathering inspired
+   Format: Bristol 10×15 cm
+   ========================================================================== */
+
+:root {
+  /* ── Dimensions carte ── */
+  --card-width: 100mm;
+  --card-height: 150mm;
+  --card-padding: 5mm;
+  --card-border-radius: 4mm;
+  --card-border-width: 2px;
+  --card-inner-border-width: 1px;
+  --card-inner-padding: 3mm;
+
+  /* ── Fond de carte ── */
+  --bg-dark-primary: #1a1a2e;
+  --bg-dark-secondary: #16213e;
+  --bg-dark-tertiary: #0f3460;
+  --bg-parchment: #2a2a3e;
+  --bg-card-inner: rgba(15, 15, 30, 0.7);
+
+  /* ── Couleurs texte ── */
+  --text-primary: #f0e6d3;
+  --text-secondary: #c4b89a;
+  --text-muted: #8a7e6b;
+  --text-gold: #d4a44c;
+  --text-gold-light: #f0d68a;
+  --text-white: #ffffff;
+
+  /* ── Bordures & décorations ── */
+  --border-gold: #d4a44c;
+  --border-gold-dark: #8a6d2e;
+  --border-bronze: #cd7f32;
+  --border-silver: #9a9a9a;
+  --border-ornate: linear-gradient(135deg, #d4a44c, #8a6d2e, #d4a44c);
+
+  /* ── Couleurs phases (badges exercices) ── */
+  --phase-empathie: #2563eb;        /* Bleu profond */
+  --phase-empathie-bg: #1e3a5f;
+  --phase-definition: #7c3aed;      /* Violet */
+  --phase-definition-bg: #3b1f6e;
+  --phase-ideation: #ea580c;        /* Orange vif */
+  --phase-ideation-bg: #5c2a0e;
+  --phase-deblocage: #dc2626;       /* Rouge */
+  --phase-deblocage-bg: #5c1a1a;
+  --phase-convergence: #059669;     /* Vert émeraude */
+  --phase-convergence-bg: #1a4a3a;
+  --phase-prototypage: #cd7f32;     /* Cuivre/Bronze */
+  --phase-prototypage-bg: #4a3520;
+  --phase-retrospective: #d4a44c;   /* Or */
+  --phase-retrospective-bg: #4a3a1a;
+
+  /* ── Couleurs catégories scénarios ── */
+  --cat-perso: #3730a3;             /* Indigo / Bleu nuit */
+  --cat-perso-bg: #1e1b4b;
+  --cat-perso-light: #6366f1;
+  --cat-pro-services: #881337;      /* Bordeaux */
+  --cat-pro-services-bg: #4c0519;
+  --cat-pro-services-light: #e11d48;
+  --cat-pro-industrie: #14532d;     /* Vert sombre */
+  --cat-pro-industrie-bg: #052e16;
+  --cat-pro-industrie-light: #22c55e;
+
+  /* ── Typographie ── */
+  --font-display: 'Cinzel', 'Playfair Display', 'Georgia', serif;
+  --font-body: 'Inter', 'Source Sans Pro', 'Segoe UI', sans-serif;
+  --font-badge: 'Cinzel', serif;
+
+  --font-size-title: 5.5mm;
+  --font-size-subtitle: 3.8mm;
+  --font-size-body: 3mm;
+  --font-size-small: 2.5mm;
+  --font-size-badge: 2.8mm;
+  --font-size-meta: 2.3mm;
+
+  --line-height-title: 1.2;
+  --line-height-body: 1.4;
+  --line-height-small: 1.3;
+
+  /* ── Ombres & effets ── */
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --shadow-inner: inset 0 0 20px rgba(0, 0, 0, 0.3);
+  --shadow-badge: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --glow-gold: 0 0 10px rgba(212, 164, 76, 0.3);
+
+  /* ── Transitions ── */
+  --transition-fast: 150ms ease;
+}
+
+/* ── Google Fonts import ── */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap');

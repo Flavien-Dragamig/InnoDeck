@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+nul
+
+# IDE
+.vscode/
+.idea/
+
+# MasterProject (sous-repo cloné, ne pas tracker)
+MasterProject/
+
+# Output généré (reconstruit via npm run generate)
+output/
+
+# Puppeteer temp
+.tmp-puppeteer/
+
+# Claude plans (local uniquement)
+.claude/plans/
+.claude/
