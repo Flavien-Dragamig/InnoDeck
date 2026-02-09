@@ -6,7 +6,8 @@
   "scripts": {
     "generate:html": "node scripts/generate-cards.js",
     "generate:pdf": "node scripts/generate-pdf.js",
-    "generate": "node scripts/generate-cards.js && node scripts/generate-pdf.js",
+    "generate:pdf-a4": "node scripts/generate-pdf-a4.js",
+    "generate": "node scripts/generate-cards.js && node scripts/generate-pdf.js && node scripts/generate-pdf-a4.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

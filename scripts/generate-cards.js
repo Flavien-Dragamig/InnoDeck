@@ -242,36 +242,64 @@ ${corners()}
   </div>`;
 }
 
-// ── Scénario Recto ──
+// ── Scénario Recto (image + titre uniquement) ──
 function scenarioFront(sc, illustrationSrc, number) {
   const catClass = sc.category;
   const catIconKey = CAT_ICONS[catClass] || 'home';
   const numStr = String(number).padStart(2, '0');
 
   return `
-  <div class="card card--scenario card--${catClass}">
+  <div class="card card--scenario card--${catClass} card--scenario-visual">
     <div class="card__background"></div>
     <div class="card__border"></div>
 ${corners()}
 
     <div class="card__inner">
-      <div class="card__illustration">
+      <div class="card__illustration card__illustration--large">
         <img src="${illustrationSrc}" alt="${escapeHtml(sc.categoryLabel)}">
         <div class="card__category-banner">
           <span class="card__category-icon">${svgIcon(catIconKey)}</span>
           ${escapeHtml(sc.categoryLabel)}
         </div>
-        <div class="card__illustration-overlay"></div>
+        <div class="card__illustration-overlay card__illustration-overlay--large"></div>
       </div>
 
-      <div class="card__title-zone">
+      <div class="card__title-zone card__title-zone--centered">
         <h1 class="card__title">${escapeHtml(sc.title)}</h1>
+      </div>
+
+      <div class="card__footer">InnoDeck</div>
+
+      <span class="card__number">#${numStr}</span>
+    </div>
+  </div>`;
+}
+
+// ── Scénario Verso (détail + mise en situation) ──
+function scenarioBack(sc, number) {
+  const catClass = sc.category;
+  const catIconKey = CAT_ICONS[catClass] || 'home';
+  const numStr = String(number).padStart(2, '0');
+
+  return `
+  <div class="card card--scenario card--${catClass} card--back">
+    <div class="card__background"></div>
+    <div class="card__border"></div>
+${corners()}
+
+    <div class="card__inner">
+      <div class="card__back-title">${escapeHtml(sc.title)}</div>
+
+      <div class="card__section card__section--scenario-main">
+        <div class="card__section-title">Mise en situation</div>
+        <div class="card__section-content">${escapeHtml(sc.situation)}</div>
       </div>
 
       <div class="card__separator"></div>
 
-      <div class="card__situation">
-        <p>${escapeHtml(sc.situation)}</p>
+      <div class="card__section card__section--scenario-hint">
+        <div class="card__section-title">Objectif</div>
+        <div class="card__section-content card__section-content--small">Utilisez les cartes Exercice pour résoudre ce défi ! Choisissez la méthode adaptée et appliquez-la à cette situation concrète.</div>
       </div>
 
       <div class="card__footer">InnoDeck</div>
@@ -296,9 +324,12 @@ function generate() {
   const dirs = {
     exRecto: path.join(OUTPUT_DIR, 'exercices', 'recto'),
     exVerso: path.join(OUTPUT_DIR, 'exercices', 'verso'),
-    scPerso: path.join(OUTPUT_DIR, 'scenarios', 'perso'),
-    scProServices: path.join(OUTPUT_DIR, 'scenarios', 'pro-services'),
-    scProIndustrie: path.join(OUTPUT_DIR, 'scenarios', 'pro-industrie'),
+    scPersoRecto: path.join(OUTPUT_DIR, 'scenarios', 'perso', 'recto'),
+    scPersoVerso: path.join(OUTPUT_DIR, 'scenarios', 'perso', 'verso'),
+    scProServicesRecto: path.join(OUTPUT_DIR, 'scenarios', 'pro-services', 'recto'),
+    scProServicesVerso: path.join(OUTPUT_DIR, 'scenarios', 'pro-services', 'verso'),
+    scProIndustrieRecto: path.join(OUTPUT_DIR, 'scenarios', 'pro-industrie', 'recto'),
+    scProIndustrieVerso: path.join(OUTPUT_DIR, 'scenarios', 'pro-industrie', 'verso'),
   };
   Object.values(dirs).forEach(ensureDir);
 
@@ -343,18 +374,29 @@ function generate() {
   }
 
   // ── Scénarios Perso ──
-  console.log('\n── Scénarios Vie Perso (20) ──');
+  console.log('\n── Scénarios Vie Perso (20 recto + 20 verso) ──');
   for (let i = 0; i < scenariosPerso.length; i++) {
     const sc = scenariosPerso[i];
     const illusSrc = illusCache['perso'] || '';
-    const html = htmlWrapper(
+
+    // Recto
+    const frontHtml = htmlWrapper(
       `${sc.title} (Recto)`,
       'scenario',
       scenarioFront(sc, illusSrc, i + 1)
     );
-    const filePath = path.join(dirs.scPerso, `${sc.slug}.html`);
-    fs.writeFileSync(filePath, html, 'utf-8');
+    fs.writeFileSync(path.join(dirs.scPersoRecto, `${sc.slug}.html`), frontHtml, 'utf-8');
     count++;
+
+    // Verso
+    const backHtml = htmlWrapper(
+      `${sc.title} (Verso)`,
+      'scenario',
+      scenarioBack(sc, i + 1)
+    );
+    fs.writeFileSync(path.join(dirs.scPersoVerso, `${sc.slug}.html`), backHtml, 'utf-8');
+    count++;
+
     console.log(`  ✓ #${String(i + 1).padStart(2, '0')} ${sc.title}`);
   }
 
@@ -362,33 +404,55 @@ function generate() {
   const proServices = scenariosPro.filter(s => s.subCategory === 'services');
   const proIndustrie = scenariosPro.filter(s => s.subCategory === 'industrie');
 
-  console.log('\n── Scénarios En Entreprise — Services (10) ──');
+  console.log('\n── Scénarios En Entreprise — Services (10 recto + 10 verso) ──');
   for (let i = 0; i < proServices.length; i++) {
     const sc = proServices[i];
     const illusSrc = illusCache['pro-services'] || '';
-    const html = htmlWrapper(
+
+    // Recto
+    const frontHtml = htmlWrapper(
       `${sc.title} (Recto)`,
       'scenario',
       scenarioFront(sc, illusSrc, i + 1)
     );
-    const filePath = path.join(dirs.scProServices, `${sc.slug}.html`);
-    fs.writeFileSync(filePath, html, 'utf-8');
+    fs.writeFileSync(path.join(dirs.scProServicesRecto, `${sc.slug}.html`), frontHtml, 'utf-8');
     count++;
+
+    // Verso
+    const backHtml = htmlWrapper(
+      `${sc.title} (Verso)`,
+      'scenario',
+      scenarioBack(sc, i + 1)
+    );
+    fs.writeFileSync(path.join(dirs.scProServicesVerso, `${sc.slug}.html`), backHtml, 'utf-8');
+    count++;
+
     console.log(`  ✓ #${String(i + 1).padStart(2, '0')} ${sc.title}`);
   }
 
-  console.log('\n── Scénarios En Entreprise — Commerce & Industrie (10) ──');
+  console.log('\n── Scénarios En Entreprise — Commerce & Industrie (10 recto + 10 verso) ──');
   for (let i = 0; i < proIndustrie.length; i++) {
     const sc = proIndustrie[i];
     const illusSrc = illusCache['pro-industrie'] || '';
-    const html = htmlWrapper(
+
+    // Recto
+    const frontHtml = htmlWrapper(
       `${sc.title} (Recto)`,
       'scenario',
       scenarioFront(sc, illusSrc, i + 1)
     );
-    const filePath = path.join(dirs.scProIndustrie, `${sc.slug}.html`);
-    fs.writeFileSync(filePath, html, 'utf-8');
+    fs.writeFileSync(path.join(dirs.scProIndustrieRecto, `${sc.slug}.html`), frontHtml, 'utf-8');
     count++;
+
+    // Verso
+    const backHtml = htmlWrapper(
+      `${sc.title} (Verso)`,
+      'scenario',
+      scenarioBack(sc, i + 1)
+    );
+    fs.writeFileSync(path.join(dirs.scProIndustrieVerso, `${sc.slug}.html`), backHtml, 'utf-8');
+    count++;
+
     console.log(`  ✓ #${String(i + 1).padStart(2, '0')} ${sc.title}`);
   }
 

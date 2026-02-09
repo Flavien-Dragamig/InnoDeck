@@ -1,27 +1,28 @@
 /**
- * InnoDeck — Générateur PDF
+ * InnoDeck — Générateur PDF A4 paysage
  *
- * Génère 56 fichiers PDF au format carte (100x150mm) :
- *   - 16 exercices : 2 pages chacun (P1 recto / P2 verso)
- *   - 40 scénarios : 2 pages chacun (P1 recto image+titre / P2 verso mise en situation)
+ * Génère des fichiers PDF au format A4 paysage (297×210mm) :
+ *   - 2 cartes 10×15cm côte à côte par page
+ *   - Marges de coupe de 5mm tout autour de chaque carte
+ *   - P1 : rectos des 2 cartes / P2 : versos des 2 cartes
+ *   - 1 fichier par doublette (paire de cartes)
  *
  * Sortie :
- *   output/pdf/10x15/
+ *   output/pdf/a4/
  *     exercices/
- *       01-crazy-8s.pdf              (2 pages : recto + verso)
- *       02-how-might-we.pdf
+ *       doublette-01-02.pdf          (P1: recto carte 1 + recto carte 2, P2: verso carte 1 + verso carte 2)
  *       ...
  *     scenarios-perso/
- *       01-frigo-vendredi-soir.pdf   (1 page : recto)
+ *       doublette-01-02.pdf
  *       ...
  *     scenarios-pro-services/
- *       01-accueil-qui-fait-fuir.pdf
+ *       doublette-01-02.pdf
  *       ...
  *     scenarios-pro-industrie/
- *       01-produit-qui-ne-se-vend-plus.pdf
+ *       doublette-01-02.pdf
  *       ...
  *
- * Usage : node scripts/generate-pdf.js
+ * Usage : node scripts/generate-pdf-a4.js
  */
 
 var fs = require('fs');
@@ -33,7 +34,7 @@ var ROOT = path.resolve(__dirname, '..');
 var DATA_DIR = path.join(ROOT, 'data');
 var CSS_DIR = path.join(ROOT, 'cards', 'css');
 var ILLUS_DIR = path.join(ROOT, 'cards', 'assets', 'illustrations');
-var PDF_DIR = path.join(ROOT, 'output', 'pdf', '10x15');
+var PDF_DIR = path.join(ROOT, 'output', 'pdf', 'a4');
 var TMP_DIR = path.join(ROOT, '.tmp-puppeteer');
 
 // ── Données ──
@@ -92,7 +93,7 @@ function starSvg(f) { return f ? '<svg viewBox="0 0 24 24" fill="#d4a44c" style=
 function starsHtml(n) { return [0,1,2].map(function(i) { return starSvg(i < n); }).join(''); }
 
 // ══════════════════════════════════════════
-// Card HTML
+// Card HTML (mêmes fonctions que generate-pdf.js)
 // ══════════════════════════════════════════
 
 function exFront(ex) {
@@ -165,18 +166,103 @@ function scBack(sc, num) {
 }
 
 // ══════════════════════════════════════════
-// HTML wrapper — 1 ou 2 cartes = 1 ou 2 pages au format 100x150mm
+// A4 paysage : 2 cartes côte à côte avec marques de coupe
 // ══════════════════════════════════════════
 
-function wrapCards(cardHtmls, css) {
-  var body = cardHtmls.join('\n');
+/**
+ * Layout A4 paysage (297 × 210 mm) :
+ *
+ *  ┌─────────────────────────────────────────────────────────────┐
+ *  │  5mm marge                                                  │
+ *  │    ┌─ marque de coupe ──────┐    ┌─ marque de coupe ──────┐ │
+ *  │    │                        │    │                        │ │
+ *  │    │   Carte 1 (100×150)    │    │   Carte 2 (100×150)    │ │
+ *  │    │                        │    │                        │ │
+ *  │    └────────────────────────┘    └────────────────────────┘ │
+ *  │  5mm marge                                                  │
+ *  └─────────────────────────────────────────────────────────────┘
+ *
+ * Calcul horizontal : 297mm total
+ *   - marge gauche 5mm + marque coupe 5mm = 10mm
+ *   - carte 100mm
+ *   - marque coupe 5mm + espace central + marque coupe 5mm
+ *   - carte 100mm
+ *   - marque coupe 5mm + marge droite 5mm = 10mm
+ *   Total cartes + marques = 10 + 100 + 10 + X + 10 + 100 + 10 = 240 + X = 297 → X = 57mm
+ *   Mais c'est trop d'espace. Simplifions :
+ *   Les marges de coupe de 5mm sont des repères visuels (lignes) autour de chaque carte.
+ *   Disposition : centré, avec un gap entre les deux cartes.
+ *
+ * Vertical : 210mm total
+ *   - carte 150mm → reste 60mm → 30mm en haut/bas
+ */
+
+function wrapA4(leftCard, rightCard, css) {
+  // Marques de coupe = petites lignes aux coins de chaque carte
+  var cropMark = function(top, left) {
+    // Lignes de 5mm autour des coins
+    var styles = 'position:absolute;';
+    styles += top ? 'top:-5mm;' : 'bottom:-5mm;';
+    styles += left ? 'left:-5mm;' : 'right:-5mm;';
+    var hLine = '<div style="position:absolute;' + (top ? 'top:0;' : 'bottom:0;') + (left ? 'left:0;' : 'right:0;') +
+      'width:5mm;height:0;border-top:0.3mm solid #999;"></div>';
+    var vLine = '<div style="position:absolute;' + (top ? 'top:0;' : 'bottom:0;') + (left ? 'left:0;' : 'right:0;') +
+      'width:0;height:5mm;border-left:0.3mm solid #999;"></div>';
+    return '<div style="' + styles + 'width:5mm;height:5mm;">' + hLine + vLine + '</div>';
+  };
+
+  var cropMarks = cropMark(true, true) + cropMark(true, false) + cropMark(false, true) + cropMark(false, false);
+
   return '<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">' +
     '<style>' + css + '\n' +
-    '@page { size: 100mm 150mm; margin: 0; }\n' +
-    'html, body { margin: 0; padding: 0; width: 100mm; background: transparent; }\n' +
-    '.card { box-shadow: none; margin: 0; page-break-after: always; break-after: page; }\n' +
-    '.card:last-child { page-break-after: auto; break-after: auto; }\n' +
-    '</style></head><body>\n' + body + '\n</body></html>';
+    '@page { size: 297mm 210mm; margin: 0; }\n' +
+    'html, body { margin: 0; padding: 0; width: 297mm; height: 210mm; background: white; }\n' +
+    '.a4-page { width: 297mm; height: 210mm; display: flex; align-items: center; justify-content: center; gap: 20mm; page-break-after: always; break-after: page; position: relative; }\n' +
+    '.a4-page:last-child { page-break-after: auto; break-after: auto; }\n' +
+    '.card-slot { position: relative; flex-shrink: 0; }\n' +
+    '.card { box-shadow: none; margin: 0; }\n' +
+    '</style></head><body>\n' +
+    '<div class="a4-page">' +
+      '<div class="card-slot">' + cropMarks + leftCard + '</div>' +
+      (rightCard ? '<div class="card-slot">' + cropMarks + rightCard + '</div>' : '') +
+    '</div>\n' +
+    '</body></html>';
+}
+
+function wrapA4TwoPages(leftFront, rightFront, leftBack, rightBack, css) {
+  var cropMark = function(top, left) {
+    var styles = 'position:absolute;';
+    styles += top ? 'top:-5mm;' : 'bottom:-5mm;';
+    styles += left ? 'left:-5mm;' : 'right:-5mm;';
+    var hLine = '<div style="position:absolute;' + (top ? 'top:0;' : 'bottom:0;') + (left ? 'left:0;' : 'right:0;') +
+      'width:5mm;height:0;border-top:0.3mm solid #999;"></div>';
+    var vLine = '<div style="position:absolute;' + (top ? 'top:0;' : 'bottom:0;') + (left ? 'left:0;' : 'right:0;') +
+      'width:0;height:5mm;border-left:0.3mm solid #999;"></div>';
+    return '<div style="' + styles + 'width:5mm;height:5mm;">' + hLine + vLine + '</div>';
+  };
+
+  var cropMarks = cropMark(true, true) + cropMark(true, false) + cropMark(false, true) + cropMark(false, false);
+
+  return '<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">' +
+    '<style>' + css + '\n' +
+    '@page { size: 297mm 210mm; margin: 0; }\n' +
+    'html, body { margin: 0; padding: 0; width: 297mm; background: white; }\n' +
+    '.a4-page { width: 297mm; height: 210mm; display: flex; align-items: center; justify-content: center; gap: 20mm; page-break-after: always; break-after: page; }\n' +
+    '.a4-page:last-child { page-break-after: auto; break-after: auto; }\n' +
+    '.card-slot { position: relative; flex-shrink: 0; }\n' +
+    '.card { box-shadow: none; margin: 0; }\n' +
+    '</style></head><body>\n' +
+    '<!-- Page 1 : Rectos -->\n' +
+    '<div class="a4-page">' +
+      '<div class="card-slot">' + cropMarks + leftFront + '</div>' +
+      (rightFront ? '<div class="card-slot">' + cropMarks + rightFront + '</div>' : '') +
+    '</div>\n' +
+    '<!-- Page 2 : Versos (ordre inversé pour impression recto-verso) -->\n' +
+    '<div class="a4-page">' +
+      (rightBack ? '<div class="card-slot">' + cropMarks + rightBack + '</div>' : '') +
+      '<div class="card-slot">' + cropMarks + leftBack + '</div>' +
+    '</div>\n' +
+    '</body></html>';
 }
 
 // ══════════════════════════════════════════
@@ -198,10 +284,11 @@ async function toPdf(browser, html, outPath) {
     await page.evaluate(function() { return document.fonts.ready; });
     await page.pdf({
       path: outPath,
-      width: '100mm',
-      height: '150mm',
+      width: '297mm',
+      height: '210mm',
       printBackground: true,
       preferCSSPageSize: true,
+      landscape: true,
       margin: { top: 0, right: 0, bottom: 0, left: 0 },
     });
   } finally {
@@ -211,11 +298,23 @@ async function toPdf(browser, html, outPath) {
 }
 
 // ══════════════════════════════════════════
+// Grouper par paires (doublettes)
+// ══════════════════════════════════════════
+
+function pairs(arr) {
+  var result = [];
+  for (var i = 0; i < arr.length; i += 2) {
+    result.push([arr[i], arr[i + 1] || null]);
+  }
+  return result;
+}
+
+// ══════════════════════════════════════════
 // Main
 // ══════════════════════════════════════════
 
 async function main() {
-  console.log('=== InnoDeck \u2014 G\u00e9n\u00e9ration PDF 10\u00d715 cm ===\n');
+  console.log('=== InnoDeck \u2014 G\u00e9n\u00e9ration PDF A4 paysage ===\n');
 
   var exDir = path.join(PDF_DIR, 'exercices');
   var scPDir = path.join(PDF_DIR, 'scenarios-perso');
@@ -239,46 +338,86 @@ async function main() {
   });
 
   try {
-    // ── 16 exercices (2 pages : recto + verso) ──
-    console.log('\u2500\u2500 Exercices (16 fichiers, 2 pages chacun) \u2500\u2500');
-    for (var i = 0; i < exercises.length; i++) {
-      var ex = exercises[i];
-      var num = String(i + 1).padStart(2, '0');
-      var html = wrapCards([exFront(ex), exBack(ex)], exCss);
-      var filename = num + '-' + ex.slug + '.pdf';
+    // ── Exercices (8 doublettes) ──
+    console.log('\u2500\u2500 Exercices (8 doublettes A4) \u2500\u2500');
+    var exPairs = pairs(exercises);
+    for (var p = 0; p < exPairs.length; p++) {
+      var pair = exPairs[p];
+      var a = pair[0], b = pair[1];
+      var n1 = String(p * 2 + 1).padStart(2, '0');
+      var n2 = b ? String(p * 2 + 2).padStart(2, '0') : null;
+      var filename = 'doublette-' + n1 + (n2 ? '-' + n2 : '') + '.pdf';
+
+      var html = wrapA4TwoPages(
+        exFront(a),
+        b ? exFront(b) : '',
+        exBack(a),
+        b ? exBack(b) : '',
+        exCss
+      );
       await toPdf(browser, html, path.join(exDir, filename));
       console.log('  \u2713 ' + filename);
     }
 
-    // ── 20 scénarios perso (2 pages : recto + verso) ──
-    console.log('\n\u2500\u2500 Sc\u00e9narios Vie Perso (20 fichiers, 2 pages chacun) \u2500\u2500');
-    for (var i = 0; i < scenariosPerso.length; i++) {
-      var sc = scenariosPerso[i];
-      var num = String(i + 1).padStart(2, '0');
-      var html = wrapCards([scFront(sc, i + 1), scBack(sc, i + 1)], scCss);
-      var filename = num + '-' + sc.slug + '.pdf';
+    // ── Scénarios Perso (10 doublettes) ──
+    console.log('\n\u2500\u2500 Sc\u00e9narios Perso (10 doublettes A4) \u2500\u2500');
+    var scPPairs = pairs(scenariosPerso);
+    for (var p = 0; p < scPPairs.length; p++) {
+      var pair = scPPairs[p];
+      var a = pair[0], b = pair[1];
+      var n1 = String(p * 2 + 1).padStart(2, '0');
+      var n2 = b ? String(p * 2 + 2).padStart(2, '0') : null;
+      var filename = 'doublette-' + n1 + (n2 ? '-' + n2 : '') + '.pdf';
+
+      var html = wrapA4TwoPages(
+        scFront(a, p * 2 + 1),
+        b ? scFront(b, p * 2 + 2) : '',
+        scBack(a, p * 2 + 1),
+        b ? scBack(b, p * 2 + 2) : '',
+        scCss
+      );
       await toPdf(browser, html, path.join(scPDir, filename));
       console.log('  \u2713 ' + filename);
     }
 
-    // ── 10 scénarios services (2 pages : recto + verso) ──
-    console.log('\n\u2500\u2500 Sc\u00e9narios Services (10 fichiers, 2 pages chacun) \u2500\u2500');
-    for (var i = 0; i < proServices.length; i++) {
-      var sc = proServices[i];
-      var num = String(i + 1).padStart(2, '0');
-      var html = wrapCards([scFront(sc, i + 1), scBack(sc, i + 1)], scCss);
-      var filename = num + '-' + sc.slug + '.pdf';
+    // ── Scénarios Services (5 doublettes) ──
+    console.log('\n\u2500\u2500 Sc\u00e9narios Services (5 doublettes A4) \u2500\u2500');
+    var scSPairs = pairs(proServices);
+    for (var p = 0; p < scSPairs.length; p++) {
+      var pair = scSPairs[p];
+      var a = pair[0], b = pair[1];
+      var n1 = String(p * 2 + 1).padStart(2, '0');
+      var n2 = b ? String(p * 2 + 2).padStart(2, '0') : null;
+      var filename = 'doublette-' + n1 + (n2 ? '-' + n2 : '') + '.pdf';
+
+      var html = wrapA4TwoPages(
+        scFront(a, p * 2 + 1),
+        b ? scFront(b, p * 2 + 2) : '',
+        scBack(a, p * 2 + 1),
+        b ? scBack(b, p * 2 + 2) : '',
+        scCss
+      );
       await toPdf(browser, html, path.join(scSDir, filename));
       console.log('  \u2713 ' + filename);
     }
 
-    // ── 10 scénarios industrie (2 pages : recto + verso) ──
-    console.log('\n\u2500\u2500 Sc\u00e9narios Industrie (10 fichiers, 2 pages chacun) \u2500\u2500');
-    for (var i = 0; i < proIndustrie.length; i++) {
-      var sc = proIndustrie[i];
-      var num = String(i + 1).padStart(2, '0');
-      var html = wrapCards([scFront(sc, i + 1), scBack(sc, i + 1)], scCss);
-      var filename = num + '-' + sc.slug + '.pdf';
+    // ── Scénarios Industrie (5 doublettes) ──
+    console.log('\n\u2500\u2500 Sc\u00e9narios Industrie (5 doublettes A4) \u2500\u2500');
+    var scIPairs = pairs(proIndustrie);
+    for (var p = 0; p < scIPairs.length; p++) {
+      var pair = scIPairs[p];
+      var a = pair[0], b = pair[1];
+      var n1 = String(p * 2 + 1).padStart(2, '0');
+      var n2 = b ? String(p * 2 + 2).padStart(2, '0') : null;
+      var filename = 'doublette-' + n1 + (n2 ? '-' + n2 : '') + '.pdf';
+
+      var html = wrapA4TwoPages(
+        scFront(a, p * 2 + 1),
+        b ? scFront(b, p * 2 + 2) : '',
+        scBack(a, p * 2 + 1),
+        b ? scBack(b, p * 2 + 2) : '',
+        scCss
+      );
       await toPdf(browser, html, path.join(scIDir, filename));
       console.log('  \u2713 ' + filename);
     }
@@ -289,12 +428,12 @@ async function main() {
     catch(e) { console.log('Note : dossier temporaire non supprim\u00e9.'); }
   }
 
-  var total = exercises.length + scenariosPerso.length + proServices.length + proIndustrie.length;
-  console.log('\n=== ' + total + ' PDF g\u00e9n\u00e9r\u00e9s dans output/pdf/10x15/ ===');
-  console.log('  exercices/              \u2192 16 fichiers (P1 recto + P2 verso)');
-  console.log('  scenarios-perso/        \u2192 20 fichiers (P1 recto + P2 verso)');
-  console.log('  scenarios-pro-services/ \u2192 10 fichiers (P1 recto + P2 verso)');
-  console.log('  scenarios-pro-industrie/\u2192 10 fichiers (P1 recto + P2 verso)');
+  var totalDoublettes = Math.ceil(exercises.length / 2) + Math.ceil(scenariosPerso.length / 2) + Math.ceil(proServices.length / 2) + Math.ceil(proIndustrie.length / 2);
+  console.log('\n=== ' + totalDoublettes + ' PDF A4 g\u00e9n\u00e9r\u00e9s dans output/pdf/a4/ ===');
+  console.log('  exercices/              \u2192 ' + Math.ceil(exercises.length / 2) + ' doublettes (2 pages : P1 rectos + P2 versos)');
+  console.log('  scenarios-perso/        \u2192 ' + Math.ceil(scenariosPerso.length / 2) + ' doublettes');
+  console.log('  scenarios-pro-services/ \u2192 ' + Math.ceil(proServices.length / 2) + ' doublettes');
+  console.log('  scenarios-pro-industrie/\u2192 ' + Math.ceil(proIndustrie.length / 2) + ' doublettes');
 }
 
 main().catch(function(err) { console.error('Erreur :', err.message); process.exit(1); });
