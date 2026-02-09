@@ -14,5 +14,12 @@ nul
 # MasterProject (sous-repo cloné, ne pas tracker)
 MasterProject/
 
+# Output généré (reconstruit via npm run generate)
+output/
+
+# Puppeteer temp
+.tmp-puppeteer/
+
 # Claude plans (local uniquement)
 .claude/plans/
+.claude/
