@@ -12,7 +12,7 @@ const DATA_DIR = path.join(ROOT, 'data');
 const CSS_DIR = path.join(ROOT, 'cards', 'css');
 const ILLUS_DIR = path.join(ROOT, 'cards', 'assets', 'illustrations');
 const ILLUS_OPT_DIR = path.join(ROOT, 'cards', 'assets', 'illustrations-optimized');
-const OUTPUT_DIR = path.join(ROOT, 'PRODUCTION', 'html');
+const OUTPUT_DIR = path.join(ROOT, 'PRODUCTION', 'V1', 'html');
 
 // ── Données ──
 const exercises = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'exercises.json'), 'utf-8'));
@@ -462,7 +462,7 @@ function generate() {
     console.log(`  ✓ #${String(i + 1).padStart(2, '0')} ${sc.title}`);
   }
 
-  console.log(`\n=== ${count} fichiers HTML générés dans PRODUCTION/html/ ===`);
+  console.log(`\n=== ${count} fichiers HTML générés dans PRODUCTION/V1/html/ ===`);
 }
 
 generate();

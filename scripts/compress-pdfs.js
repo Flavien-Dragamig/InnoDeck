@@ -5,7 +5,7 @@ var path = require('path');
 var fs   = require('fs');
 var { execSync } = require('child_process');
 
-var PDF_ROOT = path.join(__dirname, '..', 'PRODUCTION', 'pdf');
+var PDF_ROOT = path.join(__dirname, '..', 'PRODUCTION', 'V1', 'pdf');
 
 // Ghostscript : qualité impression 300 DPI
 var GS_ARGS = [

@@ -34,7 +34,7 @@ var DATA_DIR = path.join(ROOT, 'data');
 var CSS_DIR = path.join(ROOT, 'cards', 'css');
 var ILLUS_DIR = path.join(ROOT, 'cards', 'assets', 'illustrations');
 var ILLUS_OPT_DIR = path.join(ROOT, 'cards', 'assets', 'illustrations-optimized');
-var PDF_DIR = path.join(ROOT, 'PRODUCTION', 'pdf', '10x15');
+var PDF_DIR = path.join(ROOT, 'PRODUCTION', 'V1', 'pdf', '10x15');
 var TMP_DIR = path.join(ROOT, '.tmp-puppeteer');
 
 // ── Données ──
@@ -297,7 +297,7 @@ async function main() {
   }
 
   var total = exercises.length + scenariosPerso.length + proServices.length + proIndustrie.length;
-  console.log('\n=== ' + total + ' PDF g\u00e9n\u00e9r\u00e9s dans PRODUCTION/pdf/10x15/ ===');
+  console.log('\n=== ' + total + ' PDF g\u00e9n\u00e9r\u00e9s dans PRODUCTION/V1/pdf/10x15/ ===');
   console.log('  exercices/              \u2192 16 fichiers (P1 recto + P2 verso)');
   console.log('  scenarios-perso/        \u2192 20 fichiers (P1 recto + P2 verso)');
   console.log('  scenarios-pro-services/ \u2192 10 fichiers (P1 recto + P2 verso)');

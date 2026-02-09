@@ -35,7 +35,7 @@ var DATA_DIR = path.join(ROOT, 'data');
 var CSS_DIR = path.join(ROOT, 'cards', 'css');
 var ILLUS_DIR = path.join(ROOT, 'cards', 'assets', 'illustrations');
 var ILLUS_OPT_DIR = path.join(ROOT, 'cards', 'assets', 'illustrations-optimized');
-var PDF_DIR = path.join(ROOT, 'PRODUCTION', 'pdf', 'a4');
+var PDF_DIR = path.join(ROOT, 'PRODUCTION', 'V1', 'pdf', 'a4');
 var TMP_DIR = path.join(ROOT, '.tmp-puppeteer');
 
 // ── Données ──
@@ -436,7 +436,7 @@ async function main() {
   }
 
   var totalDoublettes = Math.ceil(exercises.length / 2) + Math.ceil(scenariosPerso.length / 2) + Math.ceil(proServices.length / 2) + Math.ceil(proIndustrie.length / 2);
-  console.log('\n=== ' + totalDoublettes + ' PDF A4 g\u00e9n\u00e9r\u00e9s dans PRODUCTION/pdf/a4/ ===');
+  console.log('\n=== ' + totalDoublettes + ' PDF A4 g\u00e9n\u00e9r\u00e9s dans PRODUCTION/V1/pdf/a4/ ===');
   console.log('  exercices/              \u2192 ' + Math.ceil(exercises.length / 2) + ' doublettes (2 pages : P1 rectos + P2 versos)');
   console.log('  scenarios-perso/        \u2192 ' + Math.ceil(scenariosPerso.length / 2) + ' doublettes');
   console.log('  scenarios-pro-services/ \u2192 ' + Math.ceil(proServices.length / 2) + ' doublettes');
