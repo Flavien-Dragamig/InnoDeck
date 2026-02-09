@@ -242,7 +242,7 @@
   {
     "id": 16,
     "slug": "intuition-semantique",
-    "title": "Intuition Sémantique (Champ Lexical)",
+    "title": "Intuition Sémantique",
     "objective": "Générer des concepts innovants en combinant aléatoirement des mots issus de champs lexicaux liés au problème. Exploite les associations sémantiques lointaines, considérées comme un marqueur de créativité (recherche McGill/Harvard, 2021).",
     "process": "1. Décomposer le problème en 2-3 dimensions clés (ex : pour \"repenser la pause déjeuner\" — dimensions = alimentation, temps, lieu). 2. Pour chaque dimension, générer un champ lexical de 10-15 mots (ex : alimentation — saveur, partage, saisonnier, cru, fermenté, street food, rituels, gourmandise...). 3. Combiner aléatoirement 1 mot de chaque colonne (ex : \"fermenté + 5 minutes + jardin\"). 4. Pour chaque combinaison, imaginer un concept ou service (ex : \"un bar à kombucha éphémère dans le jardin de l'entreprise, format express\"). 5. Sélectionner les 3-5 concepts les plus prometteurs.",
     "whyItWorks": "Les associations sémantiques distantes activent la pensée divergente. La combinatoire aléatoire crée des ponts entre des univers que le cerveau ne connecterait pas naturellement. Le cadre structuré (colonnes, dimensions) évite de partir dans tous les sens.",
