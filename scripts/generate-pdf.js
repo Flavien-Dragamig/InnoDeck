@@ -173,8 +173,8 @@ function wrapCards(cardHtmls, css) {
   return '<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">' +
     '<style>' + css + '\n' +
     '@page { size: 100mm 150mm; margin: 0; }\n' +
-    'html, body { margin: 0; padding: 0; width: 100mm; background: transparent; }\n' +
-    '.card { box-shadow: none; margin: 0; page-break-after: always; break-after: page; }\n' +
+    'html, body { margin: 0; padding: 0; width: 100mm; height: 150mm; background: transparent; display: block !important; }\n' +
+    '.card { box-shadow: none; margin: 0; display: block; page-break-after: always; break-after: page; }\n' +
     '.card:last-child { page-break-after: auto; break-after: auto; }\n' +
     '</style></head><body>\n' + body + '\n</body></html>';
 }
