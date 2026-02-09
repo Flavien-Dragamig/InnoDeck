@@ -257,10 +257,10 @@ function wrapA4TwoPages(leftFront, rightFront, leftBack, rightBack, css) {
       '<div class="card-slot">' + cropMarks + leftFront + '</div>' +
       (rightFront ? '<div class="card-slot">' + cropMarks + rightFront + '</div>' : '') +
     '</div>\n' +
-    '<!-- Page 2 : Versos (ordre inversé pour impression recto-verso) -->\n' +
+    '<!-- Page 2 : Versos (V1 | V2) -->\n' +
     '<div class="a4-page">' +
-      (rightBack ? '<div class="card-slot">' + cropMarks + rightBack + '</div>' : '') +
       '<div class="card-slot">' + cropMarks + leftBack + '</div>' +
+      (rightBack ? '<div class="card-slot">' + cropMarks + rightBack + '</div>' : '') +
     '</div>\n' +
     '</body></html>';
 }
