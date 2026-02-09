@@ -34,6 +34,7 @@ var ROOT = path.resolve(__dirname, '..');
 var DATA_DIR = path.join(ROOT, 'data');
 var CSS_DIR = path.join(ROOT, 'cards', 'css');
 var ILLUS_DIR = path.join(ROOT, 'cards', 'assets', 'illustrations');
+var ILLUS_OPT_DIR = path.join(ROOT, 'cards', 'assets', 'illustrations-optimized');
 var PDF_DIR = path.join(ROOT, 'PRODUCTION', 'pdf', 'a4');
 var TMP_DIR = path.join(ROOT, '.tmp-puppeteer');
 
@@ -58,6 +59,12 @@ function esc(s) {
 function fmtTime(t) { return t.replace(/minutes?/gi, 'min').replace(/\s+/g, ' ').trim(); }
 
 function illusUrl(f) {
+  // Priorité : image optimisée (JPEG) > image originale
+  var optName = f.replace(/\.(png|jpg|jpeg)$/i, '.jpg');
+  var optPath = path.join(ILLUS_OPT_DIR, optName);
+  if (fs.existsSync(optPath)) {
+    return 'file:///' + optPath.replace(/\\/g, '/');
+  }
   return 'file:///' + path.join(ILLUS_DIR, f).replace(/\\/g, '/');
 }
 
@@ -220,7 +227,7 @@ function wrapA4(leftCard, rightCard, css) {
     '.a4-page { width: 297mm; height: 210mm; display: flex; align-items: center; justify-content: center; gap: 20mm; page-break-after: always; break-after: page; position: relative; }\n' +
     '.a4-page:last-child { page-break-after: auto; break-after: auto; }\n' +
     '.card-slot { position: relative; flex-shrink: 0; }\n' +
-    '.card { box-shadow: none; margin: 0; }\n' +
+    '.card { box-shadow: none; margin: 0; page-break-after: auto; break-after: auto; }\n' +
     '</style></head><body>\n' +
     '<div class="a4-page">' +
       '<div class="card-slot">' + cropMarks + leftCard + '</div>' +
@@ -246,11 +253,11 @@ function wrapA4TwoPages(leftFront, rightFront, leftBack, rightBack, css) {
   return '<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">' +
     '<style>' + css + '\n' +
     '@page { size: 297mm 210mm; margin: 0; }\n' +
-    'html, body { margin: 0; padding: 0; width: 297mm; background: white; }\n' +
+    'html, body { margin: 0; padding: 0; width: 297mm; background: white; display: block; min-height: auto; }\n' +
     '.a4-page { width: 297mm; height: 210mm; display: flex; align-items: center; justify-content: center; gap: 20mm; page-break-after: always; break-after: page; }\n' +
     '.a4-page:last-child { page-break-after: auto; break-after: auto; }\n' +
     '.card-slot { position: relative; flex-shrink: 0; }\n' +
-    '.card { box-shadow: none; margin: 0; }\n' +
+    '.card { box-shadow: none; margin: 0; page-break-after: auto !important; break-after: auto !important; page-break-inside: avoid !important; }\n' +
     '</style></head><body>\n' +
     '<!-- Page 1 : Rectos -->\n' +
     '<div class="a4-page">' +

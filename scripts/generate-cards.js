@@ -11,6 +11,7 @@ const ROOT = path.resolve(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
 const CSS_DIR = path.join(ROOT, 'cards', 'css');
 const ILLUS_DIR = path.join(ROOT, 'cards', 'assets', 'illustrations');
+const ILLUS_OPT_DIR = path.join(ROOT, 'cards', 'assets', 'illustrations-optimized');
 const OUTPUT_DIR = path.join(ROOT, 'PRODUCTION', 'html');
 
 // ── Données ──
@@ -92,11 +93,16 @@ function svgIcon(name, viewBox = '0 0 24 24') {
   return `<svg viewBox="${viewBox}" fill="currentColor">${ICONS[name]}</svg>`;
 }
 
-function getIllustrationBase64(filename) {
-  const filePath = path.join(ILLUS_DIR, filename);
-  if (fs.existsSync(filePath)) {
-    const data = fs.readFileSync(filePath);
-    return `data:image/png;base64,${data.toString('base64')}`;
+function getIllustrationSrc(filename) {
+  // Priorité : image optimisée (JPEG) > image originale (PNG)
+  const optName = filename.replace(/\.(png|jpg|jpeg)$/i, '.jpg');
+  const optPath = path.join(ILLUS_OPT_DIR, optName);
+  if (fs.existsSync(optPath)) {
+    return 'file:///' + optPath.replace(/\\/g, '/');
+  }
+  const origPath = path.join(ILLUS_DIR, filename);
+  if (fs.existsSync(origPath)) {
+    return 'file:///' + origPath.replace(/\\/g, '/');
   }
   return '';
 }
@@ -333,14 +339,14 @@ function generate() {
   };
   Object.values(dirs).forEach(ensureDir);
 
-  // Charger les illustrations en base64 pour fichiers autonomes
-  console.log('Chargement des illustrations en base64...');
+  // Charger les chemins d'illustrations (file:// optimisées si dispo)
+  console.log('Chargement des illustrations...');
   const illusCache = {};
   const allIllus = { ...PHASE_ILLUSTRATIONS, ...CAT_ILLUSTRATIONS };
   for (const [key, filename] of Object.entries(allIllus)) {
-    const b64 = getIllustrationBase64(filename);
-    illusCache[key] = b64;
-    console.log(`  ${b64 ? '✓' : '✗'} ${filename}`);
+    const src = getIllustrationSrc(filename);
+    illusCache[key] = src;
+    console.log(`  ${src ? '✓' : '✗'} ${filename}`);
   }
 
   let count = 0;

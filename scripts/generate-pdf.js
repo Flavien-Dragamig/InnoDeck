@@ -33,6 +33,7 @@ var ROOT = path.resolve(__dirname, '..');
 var DATA_DIR = path.join(ROOT, 'data');
 var CSS_DIR = path.join(ROOT, 'cards', 'css');
 var ILLUS_DIR = path.join(ROOT, 'cards', 'assets', 'illustrations');
+var ILLUS_OPT_DIR = path.join(ROOT, 'cards', 'assets', 'illustrations-optimized');
 var PDF_DIR = path.join(ROOT, 'PRODUCTION', 'pdf', '10x15');
 var TMP_DIR = path.join(ROOT, '.tmp-puppeteer');
 
@@ -57,6 +58,12 @@ function esc(s) {
 function fmtTime(t) { return t.replace(/minutes?/gi, 'min').replace(/\s+/g, ' ').trim(); }
 
 function illusUrl(f) {
+  // Priorité : image optimisée (JPEG) > image originale
+  var optName = f.replace(/\.(png|jpg|jpeg)$/i, '.jpg');
+  var optPath = path.join(ILLUS_OPT_DIR, optName);
+  if (fs.existsSync(optPath)) {
+    return 'file:///' + optPath.replace(/\\/g, '/');
+  }
   return 'file:///' + path.join(ILLUS_DIR, f).replace(/\\/g, '/');
 }
 

@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "optimize:images": "node scripts/optimize-images.js",
     "generate:html": "node scripts/generate-cards.js",
     "generate:pdf": "node scripts/generate-pdf.js",
     "generate:pdf-a4": "node scripts/generate-pdf-a4.js",
+    "compress:pdfs": "node scripts/compress-pdfs.js",
     "generate": "node scripts/generate-cards.js && node scripts/generate-pdf.js && node scripts/generate-pdf-a4.js",
+    "generate:optimized": "node scripts/optimize-images.js && node scripts/generate-cards.js && node scripts/generate-pdf.js && node scripts/generate-pdf-a4.js && node scripts/compress-pdfs.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,6 +26,7 @@
   },
   "homepage": "https://github.com/Flavien-Dragamig/InnoDeck#readme",
   "dependencies": {
-    "puppeteer": "^24.37.2"
+    "puppeteer": "^24.37.2",
+    "sharp": "^0.33.5"
   }
 }
