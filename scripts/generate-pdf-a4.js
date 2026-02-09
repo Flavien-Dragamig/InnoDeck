@@ -8,7 +8,7 @@
  *   - 1 fichier par doublette (paire de cartes)
  *
  * Sortie :
- *   output/pdf/a4/
+ *   PRODUCTION/pdf/a4/
  *     exercices/
  *       doublette-01-02.pdf          (P1: recto carte 1 + recto carte 2, P2: verso carte 1 + verso carte 2)
  *       ...
@@ -34,7 +34,7 @@ var ROOT = path.resolve(__dirname, '..');
 var DATA_DIR = path.join(ROOT, 'data');
 var CSS_DIR = path.join(ROOT, 'cards', 'css');
 var ILLUS_DIR = path.join(ROOT, 'cards', 'assets', 'illustrations');
-var PDF_DIR = path.join(ROOT, 'output', 'pdf', 'a4');
+var PDF_DIR = path.join(ROOT, 'PRODUCTION', 'pdf', 'a4');
 var TMP_DIR = path.join(ROOT, '.tmp-puppeteer');
 
 // ── Données ──
@@ -429,7 +429,7 @@ async function main() {
   }
 
   var totalDoublettes = Math.ceil(exercises.length / 2) + Math.ceil(scenariosPerso.length / 2) + Math.ceil(proServices.length / 2) + Math.ceil(proIndustrie.length / 2);
-  console.log('\n=== ' + totalDoublettes + ' PDF A4 g\u00e9n\u00e9r\u00e9s dans output/pdf/a4/ ===');
+  console.log('\n=== ' + totalDoublettes + ' PDF A4 g\u00e9n\u00e9r\u00e9s dans PRODUCTION/pdf/a4/ ===');
   console.log('  exercices/              \u2192 ' + Math.ceil(exercises.length / 2) + ' doublettes (2 pages : P1 rectos + P2 versos)');
   console.log('  scenarios-perso/        \u2192 ' + Math.ceil(scenariosPerso.length / 2) + ' doublettes');
   console.log('  scenarios-pro-services/ \u2192 ' + Math.ceil(proServices.length / 2) + ' doublettes');

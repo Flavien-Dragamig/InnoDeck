@@ -6,7 +6,7 @@
  *   - 40 scénarios : 2 pages chacun (P1 recto image+titre / P2 verso mise en situation)
  *
  * Sortie :
- *   output/pdf/10x15/
+ *   PRODUCTION/pdf/10x15/
  *     exercices/
  *       01-crazy-8s.pdf              (2 pages : recto + verso)
  *       02-how-might-we.pdf
@@ -33,7 +33,7 @@ var ROOT = path.resolve(__dirname, '..');
 var DATA_DIR = path.join(ROOT, 'data');
 var CSS_DIR = path.join(ROOT, 'cards', 'css');
 var ILLUS_DIR = path.join(ROOT, 'cards', 'assets', 'illustrations');
-var PDF_DIR = path.join(ROOT, 'output', 'pdf', '10x15');
+var PDF_DIR = path.join(ROOT, 'PRODUCTION', 'pdf', '10x15');
 var TMP_DIR = path.join(ROOT, '.tmp-puppeteer');
 
 // ── Données ──
@@ -290,7 +290,7 @@ async function main() {
   }
 
   var total = exercises.length + scenariosPerso.length + proServices.length + proIndustrie.length;
-  console.log('\n=== ' + total + ' PDF g\u00e9n\u00e9r\u00e9s dans output/pdf/10x15/ ===');
+  console.log('\n=== ' + total + ' PDF g\u00e9n\u00e9r\u00e9s dans PRODUCTION/pdf/10x15/ ===');
   console.log('  exercices/              \u2192 16 fichiers (P1 recto + P2 verso)');
   console.log('  scenarios-perso/        \u2192 20 fichiers (P1 recto + P2 verso)');
   console.log('  scenarios-pro-services/ \u2192 10 fichiers (P1 recto + P2 verso)');

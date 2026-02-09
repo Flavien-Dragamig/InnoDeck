@@ -11,7 +11,7 @@ const ROOT = path.resolve(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
 const CSS_DIR = path.join(ROOT, 'cards', 'css');
 const ILLUS_DIR = path.join(ROOT, 'cards', 'assets', 'illustrations');
-const OUTPUT_DIR = path.join(ROOT, 'output', 'html');
+const OUTPUT_DIR = path.join(ROOT, 'PRODUCTION', 'html');
 
 // ── Données ──
 const exercises = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'exercises.json'), 'utf-8'));
@@ -456,7 +456,7 @@ function generate() {
     console.log(`  ✓ #${String(i + 1).padStart(2, '0')} ${sc.title}`);
   }
 
-  console.log(`\n=== ${count} fichiers HTML générés dans output/html/ ===`);
+  console.log(`\n=== ${count} fichiers HTML générés dans PRODUCTION/html/ ===`);
 }
 
 generate();
