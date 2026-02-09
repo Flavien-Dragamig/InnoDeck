@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "slug": "frigo-vendredi-soir",
+    "title": "Le frigo du vendredi soir",
+    "situation": "Comment cuisiner un repas avec les 5 ingrédients qui restent dans le frigo ?",
+    "category": "perso",
+    "categoryLabel": "Vie Perso"
+  },
+  {
+    "id": 2,
+    "slug": "reunion-parents-eleves",
+    "title": "La réunion parents d'élèves",
+    "situation": "Comment rendre les réunions d'école utiles et que les parents viennent vraiment ?",
+    "category": "perso",
+    "categoryLabel": "Vie Perso"
+  },
+  {
+    "id": 3,
+    "slug": "matin-catastrophe",
+    "title": "Le matin catastrophe",
+    "situation": "Comment faire sortir 2 enfants habillés, nourris et à l'heure en 30 min ?",
+    "category": "perso",
+    "categoryLabel": "Vie Perso"
+  },
+  {
+    "id": 4,
+    "slug": "voisin-bruyant",
+    "title": "Le voisin bruyant",
+    "situation": "Comment résoudre un conflit de voisinage sans que ça dégénère ?",
+    "category": "perso",
+    "categoryLabel": "Vie Perso"
+  },
+  {
+    "id": 5,
+    "slug": "valise-vacances",
+    "title": "La valise de vacances",
+    "situation": "Comment partir une semaine à 4 avec un seul bagage cabine ?",
+    "category": "perso",
+    "categoryLabel": "Vie Perso"
+  },
+  {
+    "id": 6,
+    "slug": "cadeau-derniere-minute",
+    "title": "Le cadeau de dernière minute",
+    "situation": "Comment trouver un cadeau marquant pour quelqu'un qu'on connaît peu, en 1h ?",
+    "category": "perso",
+    "categoryLabel": "Vie Perso"
+  },
+  {
+    "id": 7,
+    "slug": "placard-qui-deborde",
+    "title": "Le placard qui déborde",
+    "situation": "Comment organiser 15 m² de rangement pour ne plus jamais chercher quelque chose ?",
+    "category": "perso",
+    "categoryLabel": "Vie Perso"
+  },
+  {
+    "id": 8,
+    "slug": "dimanche-pluvieux",
+    "title": "Le dimanche pluvieux",
+    "situation": "Comment occuper des enfants de 6-10 ans un dimanche de pluie sans écran ?",
+    "category": "perso",
+    "categoryLabel": "Vie Perso"
+  },
+  {
+    "id": 9,
+    "slug": "repas-famille-tendu",
+    "title": "Le repas de famille tendu",
+    "situation": "Comment organiser un Noël à 20 personnes avec des gens qui ne se supportent pas ?",
+    "category": "perso",
+    "categoryLabel": "Vie Perso"
+  },
+  {
+    "id": 10,
+    "slug": "voiture-partagee",
+    "title": "La voiture partagée",
+    "situation": "Comment organiser le covoiturage entre 4 voisins qui bossent dans la même zone ?",
+    "category": "perso",
+    "categoryLabel": "Vie Perso"
+  },
+  {
+    "id": 11,
+    "slug": "budget-courses",
+    "title": "Le budget courses",
+    "situation": "Comment réduire ses courses de 30% sans manger moins bien ?",
+    "category": "perso",
+    "categoryLabel": "Vie Perso"
+  },
+  {
+    "id": 12,
+    "slug": "appart-trop-petit",
+    "title": "L'appart trop petit",
+    "situation": "Comment aménager un 35 m² pour 2 personnes en télétravail ?",
+    "category": "perso",
+    "categoryLabel": "Vie Perso"
+  },
+  {
+    "id": 13,
+    "slug": "fete-des-voisins",
+    "title": "La fête des voisins",
+    "situation": "Comment créer un événement dans une résidence où personne ne se parle ?",
+    "category": "perso",
+    "categoryLabel": "Vie Perso"
+  },
+  {
+    "id": 14,
+    "slug": "chien-en-vacances",
+    "title": "Le chien en vacances",
+    "situation": "Comment partir en vacances quand on a un chien et aucune solution de garde ?",
+    "category": "perso",
+    "categoryLabel": "Vie Perso"
+  },
+  {
+    "id": 15,
+    "slug": "file-attente",
+    "title": "La file d'attente",
+    "situation": "Comment rendre supportable 45 min d'attente chez le médecin ?",
+    "category": "perso",
+    "categoryLabel": "Vie Perso"
+  },
+  {
+    "id": 16,
+    "slug": "tri-des-jouets",
+    "title": "Le tri des jouets",
+    "situation": "Comment convaincre un enfant de se séparer de jouets qu'il n'utilise plus ?",
+    "category": "perso",
+    "categoryLabel": "Vie Perso"
+  },
+  {
+    "id": 17,
+    "slug": "potager-du-debutant",
+    "title": "Le potager du débutant",
+    "situation": "Comment produire ses premiers légumes sur un balcon de 4 m² ?",
+    "category": "perso",
+    "categoryLabel": "Vie Perso"
+  },
+  {
+    "id": 18,
+    "slug": "charge-mentale",
+    "title": "La charge mentale",
+    "situation": "Comment répartir équitablement les tâches domestiques dans un couple ?",
+    "category": "perso",
+    "categoryLabel": "Vie Perso"
+  },
+  {
+    "id": 19,
+    "slug": "diner-zero-stress",
+    "title": "Le dîner zéro stress",
+    "situation": "Comment recevoir 8 personnes un samedi soir sans y passer tout le week-end ?",
+    "category": "perso",
+    "categoryLabel": "Vie Perso"
+  },
+  {
+    "id": 20,
+    "slug": "demenagement-efficace",
+    "title": "Le déménagement efficace",
+    "situation": "Comment déménager un T3 en un week-end avec un budget minimal ?",
+    "category": "perso",
+    "categoryLabel": "Vie Perso"
+  }
+]

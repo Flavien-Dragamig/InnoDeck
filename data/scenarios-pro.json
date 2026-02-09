@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "slug": "accueil-qui-fait-fuir",
+    "title": "L'accueil qui fait fuir",
+    "situation": "La file d'attente à l'accueil de votre mairie décourage 40% des visiteurs avant même d'être reçus. Comment repenser le flux ?",
+    "category": "pro-services",
+    "categoryLabel": "En Entreprise — Services",
+    "subCategory": "services"
+  },
+  {
+    "id": 2,
+    "slug": "devis-fantome",
+    "title": "Le devis fantôme",
+    "situation": "Votre cabinet d'architecte envoie 30 devis/mois mais n'en convertit que 3. Comment rendre le devis lui-même convaincant ?",
+    "category": "pro-services",
+    "categoryLabel": "En Entreprise — Services",
+    "subCategory": "services"
+  },
+  {
+    "id": 3,
+    "slug": "formation-soporifique",
+    "title": "La formation soporifique",
+    "situation": "Vos sessions de formation sécurité obligatoire ont un taux de rétention proche de zéro. Comment les rendre mémorables ?",
+    "category": "pro-services",
+    "categoryLabel": "En Entreprise — Services",
+    "subCategory": "services"
+  },
+  {
+    "id": 4,
+    "slug": "turnover-saisonniers",
+    "title": "Le turnover des saisonniers",
+    "situation": "Votre hôtel perd 80% de ses saisonniers chaque année et passe 2 mois à reformer. Comment donner envie de revenir ?",
+    "category": "pro-services",
+    "categoryLabel": "En Entreprise — Services",
+    "subCategory": "services"
+  },
+  {
+    "id": 5,
+    "slug": "rapport-que-personne-ne-lit",
+    "title": "Le rapport que personne ne lit",
+    "situation": "Votre cabinet de conseil produit des rapports de 80 pages que le client ne lit jamais au-delà de la page 5. Comment livrer autrement ?",
+    "category": "pro-services",
+    "categoryLabel": "En Entreprise — Services",
+    "subCategory": "services"
+  },
+  {
+    "id": 6,
+    "slug": "salle-attente-veterinaire",
+    "title": "La salle d'attente vétérinaire",
+    "situation": "Chiens stressés, chats terrorisés, propriétaires tendus : votre clinique vétérinaire est un enfer sensoriel. Comment pacifier l'expérience ?",
+    "category": "pro-services",
+    "categoryLabel": "En Entreprise — Services",
+    "subCategory": "services"
+  },
+  {
+    "id": 7,
+    "slug": "standard-telephonique-sature",
+    "title": "Le standard téléphonique saturé",
+    "situation": "60% des appels à votre agence d'assurance tombent sur un répondeur. Les clients raccrochent et vont à la concurrence. Comment gérer le flux sans recruter ?",
+    "category": "pro-services",
+    "categoryLabel": "En Entreprise — Services",
+    "subCategory": "services"
+  },
+  {
+    "id": 8,
+    "slug": "onboarding-rate",
+    "title": "L'onboarding raté",
+    "situation": "Les nouveaux salariés de votre ESN mettent 3 mois à être autonomes et 1 sur 4 part avant la fin de la période d'essai. Comment accélérer l'intégration ?",
+    "category": "pro-services",
+    "categoryLabel": "En Entreprise — Services",
+    "subCategory": "services"
+  },
+  {
+    "id": 9,
+    "slug": "restaurant-vide-le-lundi",
+    "title": "Le restaurant vide le lundi",
+    "situation": "Votre restaurant fait salle comble le week-end mais tourne à 20% de remplissage du lundi au mercredi. Comment remplir sans casser les prix ?",
+    "category": "pro-services",
+    "categoryLabel": "En Entreprise — Services",
+    "subCategory": "services"
+  },
+  {
+    "id": 10,
+    "slug": "copropriete-ingouvernable",
+    "title": "La copropriété ingouvernable",
+    "situation": "Les AG de votre syndic réunissent 15% des copropriétaires, les décisions traînent pendant des années. Comment réengager les résidents ?",
+    "category": "pro-services",
+    "categoryLabel": "En Entreprise — Services",
+    "subCategory": "services"
+  },
+  {
+    "id": 11,
+    "slug": "produit-qui-ne-se-vend-plus",
+    "title": "Le produit qui ne se vend plus",
+    "situation": "Votre gamme phare de peinture industrielle perd 15% de parts de marché par an face à des alternatives éco. Comment pivoter ?",
+    "category": "pro-industrie",
+    "categoryLabel": "En Entreprise — Commerce & Industrie",
+    "subCategory": "industrie"
+  },
+  {
+    "id": 12,
+    "slug": "sav-qui-coute-une-fortune",
+    "title": "Le SAV qui coûte une fortune",
+    "situation": "30% de vos retours produits sont liés à une mauvaise utilisation, pas à un défaut. Comment éduquer le client sans le vexer ?",
+    "category": "pro-industrie",
+    "categoryLabel": "En Entreprise — Commerce & Industrie",
+    "subCategory": "industrie"
+  },
+  {
+    "id": 13,
+    "slug": "entrepot-chaotique",
+    "title": "L'entrepôt chaotique",
+    "situation": "Vos préparateurs de commandes parcourent 12 km/jour dans l'entrepôt. Le taux d'erreur est de 5%. Comment optimiser sans tout automatiser ?",
+    "category": "pro-industrie",
+    "categoryLabel": "En Entreprise — Commerce & Industrie",
+    "subCategory": "industrie"
+  },
+  {
+    "id": 14,
+    "slug": "catalogue-illisible",
+    "title": "Le catalogue illisible",
+    "situation": "Votre catalogue de 3 000 références de visserie est incompréhensible pour les clients non-experts. Comment simplifier le choix ?",
+    "category": "pro-industrie",
+    "categoryLabel": "En Entreprise — Commerce & Industrie",
+    "subCategory": "industrie"
+  },
+  {
+    "id": 15,
+    "slug": "boutique-que-personne-ne-trouve",
+    "title": "La boutique que personne ne trouve",
+    "situation": "Votre commerce de centre-ville est dans une rue adjacente. Les clients passent devant sans la voir. Comment créer du flux piéton ?",
+    "category": "pro-industrie",
+    "categoryLabel": "En Entreprise — Commerce & Industrie",
+    "subCategory": "industrie"
+  },
+  {
+    "id": 16,
+    "slug": "gaspillage-en-production",
+    "title": "Le gaspillage en production",
+    "situation": "Votre ligne de découpe génère 18% de chutes de matière. Le coût annuel est de 120k€. Comment réduire sans investir dans de nouvelles machines ?",
+    "category": "pro-industrie",
+    "categoryLabel": "En Entreprise — Commerce & Industrie",
+    "subCategory": "industrie"
+  },
+  {
+    "id": 17,
+    "slug": "client-qui-ne-revient-jamais",
+    "title": "Le client qui ne revient jamais",
+    "situation": "70% de vos clients e-commerce n'achètent qu'une seule fois. Comment déclencher le deuxième achat ?",
+    "category": "pro-industrie",
+    "categoryLabel": "En Entreprise — Commerce & Industrie",
+    "subCategory": "industrie"
+  },
+  {
+    "id": 18,
+    "slug": "com-interne-inexistante",
+    "title": "La com' interne inexistante",
+    "situation": "Vos opérateurs en atelier ne lisent ni les mails ni l'intranet. Les consignes de sécurité et les changements de process ne passent pas. Comment informer sans écran ?",
+    "category": "pro-industrie",
+    "categoryLabel": "En Entreprise — Commerce & Industrie",
+    "subCategory": "industrie"
+  },
+  {
+    "id": 19,
+    "slug": "salon-professionnel-decevant",
+    "title": "Le salon professionnel décevant",
+    "situation": "Vous dépensez 25k€ par salon et repartez avec 15 cartes de visite tièdes. Comment maximiser le ROI d'un stand de 9 m² ?",
+    "category": "pro-industrie",
+    "categoryLabel": "En Entreprise — Commerce & Industrie",
+    "subCategory": "industrie"
+  },
+  {
+    "id": 20,
+    "slug": "livraison-dernier-kilometre",
+    "title": "La livraison du dernier kilomètre",
+    "situation": "Vos clients pros veulent être livrés en J+1 mais votre zone de chalandise couvre 4 départements ruraux. Comment tenir la promesse sans exploser les coûts ?",
+    "category": "pro-industrie",
+    "categoryLabel": "En Entreprise — Commerce & Industrie",
+    "subCategory": "industrie"
+  }
+]

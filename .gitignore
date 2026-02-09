@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+nul
+
+# IDE
+.vscode/
+.idea/
+
+# MasterProject (sous-repo cloné, ne pas tracker)
+MasterProject/
+
+# Claude plans (local uniquement)
+.claude/plans/

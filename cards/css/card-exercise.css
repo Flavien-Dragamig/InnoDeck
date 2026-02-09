@@ -1,0 +1,105 @@
+/* ==========================================================================
+   InnoDeck — Exercise Card Styles
+   ========================================================================== */
+
+/* ── Phase-specific colors ── */
+.card--empathie { --phase-color: var(--phase-empathie); --phase-bg: var(--phase-empathie-bg); }
+.card--definition { --phase-color: var(--phase-definition); --phase-bg: var(--phase-definition-bg); }
+.card--ideation { --phase-color: var(--phase-ideation); --phase-bg: var(--phase-ideation-bg); }
+.card--deblocage { --phase-color: var(--phase-deblocage); --phase-bg: var(--phase-deblocage-bg); }
+.card--convergence { --phase-color: var(--phase-convergence); --phase-bg: var(--phase-convergence-bg); }
+.card--prototypage { --phase-color: var(--phase-prototypage); --phase-bg: var(--phase-prototypage-bg); }
+.card--retrospective { --phase-color: var(--phase-retrospective); --phase-bg: var(--phase-retrospective-bg); }
+
+/* ── Bannière phase ── */
+.card--exercise .card__category-banner {
+  background: linear-gradient(135deg, var(--phase-bg), rgba(0,0,0,0.6));
+  border-bottom: 1px solid var(--phase-color);
+}
+
+/* ── Bordure colorée par phase ── */
+.card--exercise .card__border {
+  border-color: var(--phase-color);
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.3), 0 0 8px color-mix(in srgb, var(--phase-color) 30%, transparent);
+}
+
+.card--exercise .card__border::before {
+  border-color: color-mix(in srgb, var(--phase-color) 40%, transparent);
+}
+
+/* ── Badge phase principal ── */
+.badge--phase {
+  background: var(--phase-bg);
+  color: var(--phase-color);
+  border-color: var(--phase-color);
+  font-size: var(--font-size-badge);
+  padding: 1mm 2.5mm;
+}
+
+/* ── Badges moment ── */
+.badge--moment {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  border-color: rgba(255, 255, 255, 0.1);
+  font-size: var(--font-size-meta);
+}
+
+/* ── Illustration overlay avec couleur phase ── */
+.card--exercise .card__illustration-overlay {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--phase-bg) 20%, transparent) 0%,
+    transparent 30%,
+    transparent 60%,
+    var(--bg-dark-primary) 100%
+  );
+}
+
+/* ── Verso exercice ── */
+.card--exercise.card--back .card__back-title {
+  color: var(--phase-color);
+  border-bottom-color: color-mix(in srgb, var(--phase-color) 40%, transparent);
+}
+
+.card--exercise.card--back .card__section-title {
+  color: var(--phase-color);
+}
+
+.card--exercise.card--back .card__border {
+  border-color: var(--phase-color);
+}
+
+/* ── Section déroulé avec numéros ── */
+.card__process-steps {
+  counter-reset: step;
+  padding-left: 0;
+  list-style: none;
+}
+
+.card__process-steps li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 5mm;
+  margin-bottom: 1mm;
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.card__process-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3.5mm;
+  height: 3.5mm;
+  border-radius: 50%;
+  background: var(--phase-bg);
+  border: 1px solid var(--phase-color);
+  color: var(--phase-color);
+  font-size: 2mm;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}

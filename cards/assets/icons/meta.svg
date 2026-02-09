@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+
+  <!-- Temps — Horloge -->
+  <symbol id="icon-time" viewBox="0 0 24 24">
+    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+  </symbol>
+
+  <!-- Participants — Personnes -->
+  <symbol id="icon-participants" viewBox="0 0 24 24">
+    <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+  </symbol>
+
+  <!-- Étoile (difficulté) -->
+  <symbol id="icon-star-filled" viewBox="0 0 24 24">
+    <path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.8 5.6 21.2 8 14 2 9.2h7.6z"/>
+  </symbol>
+
+  <symbol id="icon-star-empty" viewBox="0 0 24 24">
+    <path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.8 5.6 21.2 8 14 2 9.2h7.6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  </symbol>
+
+  <!-- Matériel — Outils -->
+  <symbol id="icon-material" viewBox="0 0 24 24">
+    <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
+  </symbol>
+
+  <!-- Maison (Vie Perso) -->
+  <symbol id="icon-home" viewBox="0 0 24 24">
+    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+  </symbol>
+
+  <!-- Poignée de main (Services) -->
+  <symbol id="icon-handshake" viewBox="0 0 24 24">
+    <path d="M12.22 19.85c-.18.18-.5.21-.71 0L5.08 14.5l-1.79 1.79 5.78 5.59c.56.56 1.37.84 2.19.84.78 0 1.56-.28 2.16-.84l5.08-4.92-1.77-1.82-4.51 4.71zM21.41 7.41l-4.83-4.83c-.37-.37-.88-.58-1.41-.58H8.83c-.53 0-1.04.21-1.42.58L2.59 7.41C2.22 7.78 2 8.29 2 8.83v2.34c0 .53.21 1.04.59 1.41l.58.59 7.72-7.72c.78-.78 2.05-.78 2.83 0l7.69 7.69.59-.58c.37-.38.59-.88.59-1.42V8.83c0-.54-.21-1.05-.58-1.42z"/>
+  </symbol>
+
+  <!-- Rouage/Usine (Industrie) -->
+  <symbol id="icon-industry" viewBox="0 0 24 24">
+    <path d="M2 20h20v2H2v-2zm1-1h4V7H3v12zm6 0h4V4H9v15zm6 0h4v-8h-4v8z"/>
+  </symbol>
+
+</svg>
