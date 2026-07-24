@@ -1,8 +1,8 @@
 # InnoDeck
 
-**Un jeu de 56 cartes pour animer vos sessions de Design Thinking.**
+**Un jeu de 61 cartes pour animer vos sessions de Design Thinking et de résolution de problèmes Lean.**
 
-InnoDeck est un outil de facilitation au format carte (10 x 15 cm), conçu pour rendre les ateliers d'innovation accessibles, concrets et engageants. Inspirée de l'univers des jeux de cartes à collectionner, chaque carte guide les participants pas à pas à travers les phases du Design Thinking.
+InnoDeck est un outil de facilitation au format carte (10 x 15 cm), conçu pour rendre les ateliers d'innovation accessibles, concrets et engageants. Inspirée de l'univers des jeux de cartes à collectionner, chaque carte guide les participants pas à pas à travers les phases du Design Thinking et les méthodes Lean.
 
 ---
 
@@ -10,7 +10,7 @@ InnoDeck est un outil de facilitation au format carte (10 x 15 cm), conçu pour 
 
 | Type | Quantité | Description |
 |------|----------|-------------|
-| **Exercices créatifs** | 16 cartes | Méthodes de créativité classées par phase (Empathie, Définition, Idéation, Déblocage, Convergence, Prototypage, Rétrospective) |
+| **Exercices créatifs** | 21 cartes | Méthodes de créativité et de résolution de problèmes classées par phase (Empathie, Définition, Idéation, Déblocage, Convergence, Prototypage, Rétrospective, Lean) |
 | **Scénarios Vie Perso** | 20 cartes | Mises en situation du quotidien pour s'entraîner de façon ludique |
 | **Scénarios Entreprise - Services** | 10 cartes | Défis professionnels dans le secteur des services |
 | **Scénarios Entreprise - Industrie** | 10 cartes | Défis professionnels dans le commerce et l'industrie |
@@ -27,7 +27,7 @@ InnoDeck est un outil de facilitation au format carte (10 x 15 cm), conçu pour 
 
 ---
 
-## Les 7 phases du Design Thinking
+## Les 8 phases
 
 | Phase | Description |
 |-------|-------------|
@@ -38,6 +38,7 @@ InnoDeck est un outil de facilitation au format carte (10 x 15 cm), conçu pour 
 | Convergence | Trier, prioriser et sélectionner les meilleures idées |
 | Prototypage | Rendre les idées tangibles rapidement |
 | Rétrospective | Prendre du recul et capitaliser sur l'expérience |
+| Lean | Résoudre les problèmes par les faits et l'amélioration continue (5 Pourquoi, Ishikawa, A3, QRQC, Pareto) |
 
 ---
 
@@ -60,9 +61,9 @@ InnoDeck/
     assets/              # Illustrations, badges, icônes, textures
   scripts/               # Scripts de génération (HTML, PDF 10x15, PDF A4)
   PRODUCTION/V1/         # Fichiers générés prêts à imprimer
-    html/                # 112 fichiers HTML (recto + verso)
-    pdf/10x15/           # 56 PDF au format carte (100 x 150 mm)
-    pdf/a4/              # 28 PDF A4 paysage (doublettes avec marques de coupe)
+    html/                # 122 fichiers HTML (recto + verso)
+    pdf/10x15/           # 61 PDF au format carte (100 x 150 mm)
+    pdf/a4/              # 31 PDF A4 paysage (doublettes avec marques de coupe)
   SOURCES/               # Contenu source et illustrations originales
 ```
 
