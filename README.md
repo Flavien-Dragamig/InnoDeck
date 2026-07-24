@@ -1,6 +1,6 @@
 # InnoDeck
 
-**Un jeu de 61 cartes pour animer vos sessions de Design Thinking et de résolution de problèmes Lean.**
+**Un jeu de 66 cartes pour animer vos sessions de Design Thinking, la résolution de problèmes Lean et vos rituels d'équipe agile.**
 
 InnoDeck est un outil de facilitation au format carte (10 x 15 cm), conçu pour rendre les ateliers d'innovation accessibles, concrets et engageants. Inspirée de l'univers des jeux de cartes à collectionner, chaque carte guide les participants pas à pas à travers les phases du Design Thinking et les méthodes Lean.
 
@@ -10,7 +10,7 @@ InnoDeck est un outil de facilitation au format carte (10 x 15 cm), conçu pour 
 
 | Type | Quantité | Description |
 |------|----------|-------------|
-| **Exercices créatifs** | 21 cartes | Méthodes de créativité et de résolution de problèmes classées par phase (Empathie, Définition, Idéation, Déblocage, Convergence, Prototypage, Rétrospective, Lean) |
+| **Exercices créatifs** | 26 cartes | Méthodes de créativité, de résolution de problèmes et d'animation d'équipe classées par phase (Empathie, Définition, Idéation, Déblocage, Convergence, Prototypage, Rétrospective, Lean, Animation) |
 | **Scénarios Vie Perso** | 20 cartes | Mises en situation du quotidien pour s'entraîner de façon ludique |
 | **Scénarios Entreprise - Services** | 10 cartes | Défis professionnels dans le secteur des services |
 | **Scénarios Entreprise - Industrie** | 10 cartes | Défis professionnels dans le commerce et l'industrie |
@@ -27,7 +27,7 @@ InnoDeck est un outil de facilitation au format carte (10 x 15 cm), conçu pour 
 
 ---
 
-## Les 8 phases
+## Les 9 phases
 
 | Phase | Description |
 |-------|-------------|
@@ -39,6 +39,7 @@ InnoDeck est un outil de facilitation au format carte (10 x 15 cm), conçu pour 
 | Prototypage | Rendre les idées tangibles rapidement |
 | Rétrospective | Prendre du recul et capitaliser sur l'expérience |
 | Lean | Résoudre les problèmes par les faits et l'amélioration continue (5 Pourquoi, Ishikawa, A3, QRQC, Pareto) |
+| Animation | Rythmer les rituels d'équipe et entretenir l'énergie du collectif (Météo d'équipe, Walk the Board) |
 
 ---
 
@@ -61,9 +62,9 @@ InnoDeck/
     assets/              # Illustrations, badges, icônes, textures
   scripts/               # Scripts de génération (HTML, PDF 10x15, PDF A4)
   PRODUCTION/V1/         # Fichiers générés prêts à imprimer
-    html/                # 122 fichiers HTML (recto + verso)
-    pdf/10x15/           # 61 PDF au format carte (100 x 150 mm)
-    pdf/a4/              # 31 PDF A4 paysage (doublettes avec marques de coupe)
+    html/                # 132 fichiers HTML (recto + verso)
+    pdf/10x15/           # 66 PDF au format carte (100 x 150 mm)
+    pdf/a4/              # 33 PDF A4 paysage (doublettes avec marques de coupe)
   SOURCES/               # Contenu source et illustrations originales
 ```
 
