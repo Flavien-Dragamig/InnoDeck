@@ -17,8 +17,8 @@ InnoDeck est un outil de facilitation au format carte (10 x 15 cm), conçu pour 
 
 ### Cartes Exercice (recto / verso)
 
-- **Recto** : illustration de la phase, titre, badges (phase + moment du projet), métadonnées (durée, participants, difficulté), objectif
-- **Verso** : déroulé détaillé, "pourquoi ça marche", matériel nécessaire
+- **Recto** : illustration de la phase, titre en version originale avec sa traduction française en sous-titre (complétée du nom japonais pour les outils d'origine japonaise comme 5 Whys ou Fishbone Diagram), badges (phase + moment du projet), métadonnées (durée, participants, difficulté), objectif
+- **Verso** : titre VO et traduction en rappel, déroulé détaillé, "pourquoi ça marche", matériel nécessaire
 
 ### Cartes Scénario (recto / verso)
 
