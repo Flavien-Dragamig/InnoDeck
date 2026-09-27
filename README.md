@@ -52,37 +52,16 @@ InnoDeck est un outil de facilitation au format carte (10 x 15 cm), conçu pour 
 
 ---
 
-## Structure du projet
+## Contenu de ce dépôt
+
+Ce dépôt public héberge uniquement les livrables prêts à l'emploi : ce README et les PDF finaux. La chaîne de génération (données JSON, HTML, scripts Node.js/Puppeteer, illustrations sources) est développée dans un environnement privé et n'est pas publiée ici.
 
 ```
 InnoDeck/
-  data/                  # Données JSON (exercices, scénarios)
-  cards/
-    css/                 # Styles des cartes (variables, base, exercice, scénario)
-    assets/              # Illustrations, badges, icônes, textures
-  scripts/               # Scripts de génération (HTML, PDF 10x15, PDF A4)
-  PRODUCTION/V1/         # Fichiers générés prêts à imprimer
-    html/                # 132 fichiers HTML (recto + verso)
-    pdf/10x15/           # 66 PDF au format carte (100 x 150 mm)
-    pdf/a4/              # 33 PDF A4 paysage (doublettes avec marques de coupe)
-  SOURCES/               # Contenu source et illustrations originales
-```
-
----
-
-## Génération des cartes
-
-```bash
-# Installer les dépendances
-npm install
-
-# Générer HTML + PDF 10x15 + PDF A4
-npm run generate
-
-# Ou séparément
-npm run generate:html
-npm run generate:pdf
-npm run generate:pdf-a4
+  README.md
+  PRODUCTION/V1/pdf/
+    10x15/                 # 66 PDF au format carte (100 x 150 mm), un par carte
+    a4/                    # 33 PDF A4 paysage (doublettes avec marques de coupe)
 ```
 
 ---
@@ -93,15 +72,6 @@ Deux formats sont disponibles dans `PRODUCTION/V1/pdf/` :
 
 - **10x15/** : un PDF par carte, prêt pour impression directe sur papier 10 x 15 cm (services d'impression en ligne ou imprimante photo)
 - **a4/** : deux cartes par page A4 paysage avec marques de coupe, pour impression maison recto-verso
-
----
-
-## Stack technique
-
-- **Design** : HTML / CSS (rendu visuel style carte à collectionner)
-- **Données** : JSON
-- **Génération** : Node.js + Puppeteer (HTML vers PDF)
-- **Versioning** : Git + GitHub
 
 ---
 
