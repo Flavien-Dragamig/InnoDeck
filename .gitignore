@@ -1,0 +1,10 @@
+# Ce repo ne suit plus que README.md et les PDF prêts à imprimer.
+# Tout le reste (scripts, sources, data, HTML, previews...) reste en local, non suivi.
+/*
+!/README.md
+!/PRODUCTION/
+/PRODUCTION/*
+!/PRODUCTION/V1/
+/PRODUCTION/V1/*
+!/PRODUCTION/V1/pdf/
+!/.gitignore
