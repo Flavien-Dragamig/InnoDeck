@@ -1,6 +1,6 @@
 # InnoDeck
 
-**Un jeu de 66 cartes pour animer vos sessions de Design Thinking, la résolution de problèmes Lean et vos rituels d'équipe agile.**
+**Un jeu de 70 cartes pour animer vos sessions de Design Thinking, la résolution de problèmes Lean et vos rituels d'équipe agile.**
 
 InnoDeck est un outil de facilitation au format carte (10 x 15 cm), conçu pour rendre les ateliers d'innovation accessibles, concrets et engageants. Inspirée de l'univers des jeux de cartes à collectionner, chaque carte guide les participants pas à pas à travers les phases du Design Thinking et les méthodes Lean.
 
@@ -60,8 +60,8 @@ Ce dépôt public héberge uniquement les livrables prêts à l'emploi : ce READ
 InnoDeck/
   README.md
   PRODUCTION/V1/pdf/
-    10x15/                 # 66 PDF au format carte (100 x 150 mm), un par carte
-    a4/                    # 33 PDF A4 paysage (doublettes avec marques de coupe)
+    10x15/                 # 70 PDF au format carte (100 x 150 mm), un par carte
+    a4/                    # 35 PDF A4 paysage (doublettes avec marques de coupe)
 ```
 
 ---
