@@ -3,6 +3,10 @@
 /*
 !/README.md
 !/PRODUCTION/
+# PRODUCTION/deck-preview.html (généré par scripts/generate-preview.js) est un
+# outil de travail local, pas un livrable : volontairement exclu du suivi.
+# Déjà couvert par la règle /PRODUCTION/* ci-dessous (rien ne le ré-autorise),
+# cette ligne ne fait que documenter l'intention.
 /PRODUCTION/*
 !/PRODUCTION/V_ecran/
 /PRODUCTION/V_ecran/*
