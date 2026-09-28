@@ -4,7 +4,10 @@
 !/README.md
 !/PRODUCTION/
 /PRODUCTION/*
-!/PRODUCTION/V1/
-/PRODUCTION/V1/*
-!/PRODUCTION/V1/pdf/
+!/PRODUCTION/V_ecran/
+/PRODUCTION/V_ecran/*
+!/PRODUCTION/V_ecran/pdf/
+!/PRODUCTION/V_impression/
+/PRODUCTION/V_impression/*
+!/PRODUCTION/V_impression/pdf/
 !/.gitignore

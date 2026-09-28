@@ -59,16 +59,25 @@ Ce dépôt public héberge uniquement les livrables prêts à l'emploi : ce READ
 ```
 InnoDeck/
   README.md
-  PRODUCTION/V1/pdf/
-    10x15/                 # 70 PDF au format carte (100 x 150 mm), un par carte
-    a4/                    # 35 PDF A4 paysage (doublettes avec marques de coupe)
+  PRODUCTION/
+    V_ecran/pdf/            # Variante fond sombre premium (référence écran)
+      10x15/                  # 70 PDF au format carte (100 x 150 mm), un par carte
+      a4/                     # 35 PDF A4 paysage (doublettes avec marques de coupe)
+    V_impression/pdf/       # Variante fond clair, économe en encre (impression maison)
+      10x15/                  # 70 PDF au format carte (100 x 150 mm), un par carte
+      a4/                     # 35 PDF A4 paysage (doublettes avec marques de coupe)
 ```
 
 ---
 
+## Deux variantes
+
+- **V_ecran** : fond sombre navy, texte doré. Pensée pour une lecture à l'écran ou une impression professionnelle en couleur.
+- **V_impression** : même contenu, fond clair. Pensée pour l'impression maison (bien moins d'encre consommée sur les grands aplats), avec les bandeaux de phase et de catégorie qui restent sombres pour la lisibilité.
+
 ## Impression
 
-Deux formats sont disponibles dans `PRODUCTION/V1/pdf/` :
+Deux formats sont disponibles pour chaque variante, dans `PRODUCTION/V_ecran/pdf/` et `PRODUCTION/V_impression/pdf/` :
 
 - **10x15/** : un PDF par carte, prêt pour impression directe sur papier 10 x 15 cm (services d'impression en ligne ou imprimante photo)
 - **a4/** : deux cartes par page A4 paysage avec marques de coupe, pour impression maison recto-verso
